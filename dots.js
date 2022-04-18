@@ -6,11 +6,16 @@ class Dot {
 		this.r = 0;
 		this.g = 0;
 		this.b = 0;
+		this.isDifferent = false;
 	}
 
 	draw() {
 		fill(this.r, this.g, this.b);
 		circle(this.x, this.y, this.diameter);
+	}
+
+	getIsDifferent() {
+		return this.isDifferent;
 	}
 
 	getRadius() {
@@ -29,5 +34,9 @@ class Dot {
 		this.r = r;
 		this.g = g;
 		this.b = b;
+	}
+
+	setIsDifferent(parity) {
+		this.isDifferent = parity;
 	}
 }

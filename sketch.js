@@ -19,31 +19,30 @@ function setup() {
 		dots[i] = new Dot(x, y, diameter);
 	}
 
-	let differentDot = Math.floor(random(dots.length));
+	let differentDotIndex = Math.floor(random(dots.length));
+	dots[differentDotIndex].setIsDifferent(true);
+
 	let differentValue = Math.floor(random(3));
 
 	for (let i = 0; i < dots.length; i++) {
-		if (i === differentDot) {
+		if (i === differentDotIndex) {
 			switch (differentValue) {
 				case 0:
 					const redRange = getRange(r, roundVariance);
 					const randomR = random(redRange[0], redRange[1] + 1);
 					dots[i].setColor(randomR, g, b);
-					debugger;
 
 					break;
 				case 1:
 					const greenRange = getRange(g, roundVariance);
 					const randomG = random(greenRange[0], greenRange[1] + 1);
 					dots[i].setColor(r, randomG, b);
-					debugger;
 
 					break;
 				case 2:
 					const blueRange = getRange(b, roundVariance);
 					const randomB = random(blueRange[0], blueRange[1]);
 					dots[i].setColor(r, g, randomB);
-					debugger;
 
 					break;
 			}
@@ -80,7 +79,17 @@ function getRange(rgbValue, roundVariance) {
 }
 
 function mousePressed() {
-	for (let i = 0; i < dots.length; i++){
-		if(Math.sqrt((mouseX - dots[i].getX)() ** 2) + ((mouseY - dots[i].getY()) ** 2)) <= 
+	for (let i = 0; i < dots.length; i++) {
+		const distanceFromRadius = Math.sqrt(
+			(mouseX - dots[i].getX()) ** 2 + (mouseY - dots[i].getY()) ** 2
+		);
+		if (
+			distanceFromRadius <= dots[i].getRadius() &&
+			dots[i].getIsDifferent()
+		) {
+			console.log("correct");
+		} else {
+			console.log("nope");
+		}
 	}
 }

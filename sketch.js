@@ -1,6 +1,7 @@
 const dots = [];
-let round = 1;
 const numberOfRounds = 10;
+let round = 1;
+let score = 0;
 
 function setup() {
 	createCanvas(displayWidth, displayHeight);
@@ -58,6 +59,14 @@ function draw() {
 	for (const dot of dots) {
 		dot.draw();
 	}
+
+	textSize(64);
+	fill(0);
+	text(`Round: ${round}`, displayWidth * 0.05, displayWidth * 0.05);
+
+	textSize(64);
+	fill(0);
+	text(score, displayWidth * 0.95, displayWidth * 0.05);
 }
 
 function getRange(rgbValue, roundVariance) {
@@ -87,9 +96,7 @@ function mousePressed() {
 			distanceFromRadius <= dots[i].getRadius() &&
 			dots[i].getIsDifferent()
 		) {
-			console.log("correct");
-		} else {
-			console.log("nope");
+			score += 10;
 		}
 	}
 }

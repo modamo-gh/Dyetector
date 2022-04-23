@@ -53,6 +53,8 @@ function mousePressed() {
 			dots[i].getIsDifferent()
 		) {
 			score += 10;
+			round++;
+			drawCircles();
 		}
 	}
 }

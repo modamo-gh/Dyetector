@@ -44,18 +44,21 @@ function getRange(rgbValue, roundVariance) {
 }
 
 function mousePressed() {
-	for (let i = 0; i < dots.length; i++) {
-		const distanceFromRadius = Math.sqrt(
-			(mouseX - dots[i].getX()) ** 2 + (mouseY - dots[i].getY()) ** 2
-		);
-		if (
-			distanceFromRadius <= dots[i].getRadius() &&
-			dots[i].getIsDifferent()
-		) {
-			score += 10;
-			round++;
-			drawCircles();
+	if (round < 10) {
+		for (let i = 0; i < dots.length; i++) {
+			const distanceFromRadius = Math.sqrt(
+				(mouseX - dots[i].getX()) ** 2 + (mouseY - dots[i].getY()) ** 2
+			);
+			if (
+				distanceFromRadius <= dots[i].getRadius() &&
+				dots[i].getIsDifferent()
+			) {
+				score += 10;
+			}
 		}
+
+		round++;
+		drawCircles();
 	}
 }
 

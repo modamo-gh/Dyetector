@@ -6,6 +6,14 @@ let score = 0;
 function setup() {
 	createCanvas(displayWidth, displayHeight);
 
+	for (let i = 0; i < 3; i++) {
+		const x = (displayWidth * (i + 1)) / 4;
+		const y = displayHeight / 2;
+		const diameter = displayWidth * 0.2;
+
+		dots[i] = new Dot(x, y, diameter);
+	}
+
 	drawCircles();
 }
 
@@ -63,19 +71,16 @@ function mousePressed() {
 }
 
 function drawCircles() {
+	// Create random RGB color
 	const r = random(255);
 	const g = random(255);
 	const b = random(255);
 
+	/**
+	 * Each round technically gets more difficult
+	 * Because the range of possible values is reduced
+	 */
 	const roundVariance = 255 - (255 / numberOfRounds) * (round - 1);
-
-	for (let i = 0; i < 3; i++) {
-		const x = (displayWidth * (i + 1)) / 4;
-		const y = displayHeight / 2;
-		const diameter = displayWidth * 0.2;
-
-		dots[i] = new Dot(x, y, diameter);
-	}
 
 	let differentDotIndex = Math.floor(random(dots.length));
 	dots[differentDotIndex].setIsDifferent(true);

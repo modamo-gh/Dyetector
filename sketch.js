@@ -26,11 +26,11 @@ function draw() {
 
 	textSize(64);
 	fill(0);
-	text(`Round: ${round}`, displayWidth * 0.05, displayWidth * 0.05);
+	text(`Round: ${round}`, displayWidth * 0.025, displayWidth * 0.05);
 
 	textSize(64);
 	fill(0);
-	text(score, displayWidth * 0.95, displayWidth * 0.05);
+	text(score, displayWidth * 0.925, displayWidth * 0.05);
 }
 
 function colorCircles() {
